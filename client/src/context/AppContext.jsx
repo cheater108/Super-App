@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { useContext } from "react";
+import React, { createContext, useState } from "react";
 
-export const AppContext = useContext();
 function AppProvider({ children }) {
+    const AppContext = createContext();
     const [user, setUser] = useState(
         JSON.parse(localStorage.getItem("user")) || null
     );
