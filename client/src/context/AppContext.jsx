@@ -1,10 +1,16 @@
 import React, { createContext, useState } from "react";
-
+export const AppContext = createContext();
 function AppProvider({ children }) {
-    const AppContext = createContext();
     const [user, setUser] = useState(
-        JSON.parse(localStorage.getItem("user")) || null
+        JSON.parse(localStorage.getItem("user")) || {
+            email: "",
+            name: "",
+            username: "",
+            phone: "",
+            consent: false,
+        }
     );
+
     const [selectedGenre, setSelectedGenre] = useState(
         JSON.parse(localStorage.getItem("selectedGenre")) || []
     );

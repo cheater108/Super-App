@@ -1,7 +1,11 @@
+import { useContext, useState } from "react";
 import Form from "../components/Form";
 import styles from "./RegisterPage.module.css";
+import { AppContext } from "../context/AppContext";
 
 function RegisterPage() {
+    const { user, setUser } = useContext(AppContext);
+
     return (
         <div className={styles.container}>
             <div className={styles.left}>
@@ -13,7 +17,7 @@ function RegisterPage() {
                         <h1>Supper app</h1>
                         <p>Create your new account</p>
                     </div>
-                    <Form />
+                    <Form user={user} setUser={setUser} />
                     <div className={styles.footer}>
                         <p>
                             By clicking on Sign up. you agree to Superapp{" "}
