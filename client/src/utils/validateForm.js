@@ -14,6 +14,7 @@ function validateForm({ name, email, username, phone, consent }) {
     };
 
     if (!name || !email || !username || !phone || !consent) {
+        // console.log("here 1");
         valid = false;
     }
     error.name = !name_regex.test(name);
@@ -23,7 +24,7 @@ function validateForm({ name, email, username, phone, consent }) {
     error.consent = !consent;
 
     for (let prop in error) {
-        if (prop) {
+        if (error[prop]) {
             valid = false;
         }
     }

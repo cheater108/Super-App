@@ -2,20 +2,28 @@ import { useState } from "react";
 
 import styles from "./Form.module.css";
 import validateForm from "../utils/validateForm";
+import { useNavigate } from "react-router-dom";
 
 function Form({ user, setUser }) {
-    const [valid, setValid] = useState(true);
+    console.log(user);
+    const navigate = useNavigate();
     const [error, setError] = useState({
         name: false,
         username: false,
         email: false,
         phone: false,
+        consent: false,
     });
 
     function validate(e) {
         e.preventDefault();
-        console.log(validateForm(user));
-        setError(validateForm(user).error);
+        const res = validateForm(user);
+        console.log(res);
+        if (res.valid) {
+            navigate("/genres");
+        } else {
+            setError(res.error);
+        }
     }
 
     return (
@@ -24,7 +32,8 @@ function Form({ user, setUser }) {
                 type="text"
                 name="name"
                 placeholder="name"
-                className={error.name && "error_input"}
+                className={error.name ? "error_input" : "none"}
+                value={user.name}
                 onChange={(e) =>
                     setUser({ ...user, [e.target.name]: e.target.value })
                 }
@@ -34,7 +43,8 @@ function Form({ user, setUser }) {
                 type="text"
                 name="username"
                 placeholder="username"
-                className={error.username && "error_input"}
+                className={error.username ? "error_input" : "none"}
+                value={user.username}
                 onChange={(e) =>
                     setUser({ ...user, [e.target.name]: e.target.value })
                 }
@@ -46,7 +56,8 @@ function Form({ user, setUser }) {
                 type="text"
                 name="email"
                 placeholder="email"
-                className={error.email && "error_input"}
+                className={error.email ? "error_input" : "none"}
+                value={user.email}
                 onChange={(e) =>
                     setUser({ ...user, [e.target.name]: e.target.value })
                 }
@@ -56,7 +67,8 @@ function Form({ user, setUser }) {
                 type="text"
                 name="phone"
                 placeholder="phone"
-                className={error.phone && "error_input"}
+                className={error.phone ? "error_input" : "none"}
+                value={user.phone}
                 onChange={(e) =>
                     setUser({ ...user, [e.target.name]: e.target.value })
                 }
@@ -67,6 +79,7 @@ function Form({ user, setUser }) {
                     type="checkbox"
                     id="data"
                     name="consent"
+                    checked={user.consent}
                     onChange={(e) =>
                         setUser({ ...user, [e.target.name]: e.target.checked })
                     }
