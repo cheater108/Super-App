@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import validateForm from "../utils/validateForm";
 export const AppContext = createContext();
 function AppProvider({ children }) {
     const [user, setUser] = useState(
@@ -14,6 +15,7 @@ function AppProvider({ children }) {
     const [selectedGenre, setSelectedGenre] = useState(
         JSON.parse(localStorage.getItem("selectedGenre")) || []
     );
+
     return (
         <AppContext.Provider
             value={{

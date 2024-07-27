@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import Form from "../components/Form";
 import styles from "./RegisterPage.module.css";
 import { AppContext } from "../context/AppContext";
+import SupperApp from "../components/SupperApp";
 
 function RegisterPage() {
     const { user, setUser } = useContext(AppContext);
@@ -14,7 +15,8 @@ function RegisterPage() {
             <div className={styles.right}>
                 <div className={styles.right_container}>
                     <div className={styles.header}>
-                        <h1>Supper app</h1>
+                        {/* <h1>Supper app</h1> */}
+                        <SupperApp align="center" />
                         <p>Create your new account</p>
                     </div>
                     <Form user={user} setUser={setUser} />

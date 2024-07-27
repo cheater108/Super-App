@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./Form.module.css";
 import validateForm from "../utils/validateForm";
 import { useNavigate } from "react-router-dom";
+import saveUser from "../utils/saveUser";
 
 function Form({ user, setUser }) {
     console.log(user);
@@ -20,6 +21,7 @@ function Form({ user, setUser }) {
         const res = validateForm(user);
         console.log(res);
         if (res.valid) {
+            saveUser(user);
             navigate("/genres");
         } else {
             setError(res.error);

@@ -1,0 +1,60 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.left {
+    width: 40%;
+    padding: 40px;
+    padding-inline: 80px;
+}
+
+.left h1 {
+    font-size: 3rem;
+    margin-top: 50px;
+}
+
+.right_container {
+    width: 65%;
+    margin-right: 80px;
+    margin-left: auto;
+}
+.movies_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-end;
+    margin-top: 50px;
+}
+.btn {
+    margin-top: 40px;
+    font-size: 1.5rem;
+    border: none;
+    padding: 7px 25px;
+    border-radius: 22em;
+    color: white;
+    background-color: #148a08;
+    float: right;
+}
+
+.selected {
+    width: 150px;
+    border-radius: 22em;
+    padding: 10px 20px;
+    background-color: #148a08;
+}
+.selected span {
+    float: right;
+}
+
+.selected_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.error {
+    margin-top: 10px;
+    color: red;
+}
