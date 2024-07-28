@@ -1,0 +1,61 @@
+.container {
+    background-color: #1e2343;
+    border-radius: 20px;
+    height: 100%;
+    display: flex;
+    padding: 15px;
+    justify-content: space-around;
+}
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 53%;
+}
+.tiles {
+    display: flex;
+
+    flex: 1;
+}
+.tile {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.time_text {
+    font-size: 1.5rem;
+    margin-block: 0.1em;
+}
+
+.control_btn {
+    width: 20px;
+}
+
+.btn {
+    display: block;
+    width: 86%;
+    margin: auto;
+    border: none;
+    background-color: #ff6a6a;
+    color: white;
+    border-radius: 22em;
+    padding: 5px;
+}
+
+.time_box {
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-color: #191e39;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+.colon {
+    display: flex;
+    align-items: center;
+    padding-top: 7%;
+}

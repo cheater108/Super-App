@@ -12,6 +12,29 @@ body {
     color: white;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 80%;
+    margin-right: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 22em;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 /* 
 By default, the amount of space an element will takes equals its height/width + padding
 

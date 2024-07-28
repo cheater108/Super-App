@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    background-color: #5746ea;
+    height: 100%;
+    padding: 2em;
+    border-radius: 20px;
+    gap: 10%;
+}
+
+.container img {
+    height: 100%;
+}
+.details {
+    padding: 10px;
+    flex-grow: 1;
+}
+.details p {
+    font-size: 1.8rem;
+}
+.details h1 {
+    font-size: 2.5rem;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    gap: 15px;
+}
+
+.genre {
+    background-color: #9f94ff;
+    width: 45%;
+    padding: 10px 20px;
+    border-radius: 22em;
+}

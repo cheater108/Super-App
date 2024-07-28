@@ -3,6 +3,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GenresPage from "./pages/GenresPage";
 import CaraouselPage from "./pages/CaraouselPage";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
     return (
@@ -14,7 +15,7 @@ function App() {
                     <Route path="/home" element={<RegisterPage />} />
                     <Route path="/genres" element={<GenresPage />} />
                     <Route path="/carousel" element={<CaraouselPage />} />
-                    <Route path="/dashboard" element={<RegisterPage />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/movies" element={<RegisterPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
