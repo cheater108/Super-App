@@ -4,28 +4,42 @@ import up from "../assets/up-arrow.svg";
 import down from "../assets/down-arrow.svg";
 import parseSeconds from "../utils/parseSeconds";
 import formatTime from "../utils/formatTime";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 const HOUR_RATE = 3600;
 const MINUTE_RATE = 60;
 
 function Timer() {
     const [time, setTime] = useState(10);
     const [playing, setPlaying] = useState(false);
+    const [timmer, setTimmer] = useState(10);
 
     const { hours, minutes, sec } = parseSeconds(time);
     const { hrs, mins, s } = formatTime(hours, minutes, sec);
 
     function increaseHandler(rate) {
-        if (!playing) setTime(time + rate);
+        if (!playing) {
+            setTime(time + rate);
+            setTimmer(time + rate);
+        }
     }
 
     function decreaseHandle(rate) {
         if (playing) return;
         if (rate === HOUR_RATE) {
-            if (hours !== 0) setTime(time - rate);
+            if (hours !== 0) {
+                setTime(time - rate);
+                setTimmer(time - rate);
+            }
         } else if (rate === MINUTE_RATE) {
-            if (minutes !== 0) setTime(time - rate);
+            if (minutes !== 0) {
+                setTime(time - rate);
+                setTimmer(time - rate);
+            }
         } else {
-            if (sec !== 0) setTime(time - rate);
+            if (sec !== 0) {
+                setTime(time - rate);
+                setTimmer(time - rate);
+            }
         }
     }
 
@@ -47,7 +61,25 @@ function Timer() {
     return (
         <div className={styles.container}>
             <div className={styles.time_box}>
-                {hrs}:{mins}:{s}
+                <p className={styles.timmer_text}>
+                    {hrs}:{mins}:{s}{" "}
+                </p>
+                <div className={styles.progress_container}>
+                    <CircularProgressbar
+                        value={time}
+                        maxValue={timmer}
+                        strokeWidth={3}
+                        styles={buildStyles({
+                            strokeLinecap: "round",
+
+                            pathColor: `#ff6a6a`,
+                            textColor: "#f88",
+                            trailColor: "#191e39",
+                            backgroundColor: "#3e98c7",
+                            pathTransitionDuration: 0.5,
+                        })}
+                    />
+                </div>{" "}
             </div>
             <div className={styles.controls}>
                 <div className={styles.tiles}>

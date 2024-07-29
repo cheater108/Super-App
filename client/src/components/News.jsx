@@ -8,7 +8,7 @@ function News() {
         async function loadNews() {
             const data = await fetchNews();
             // console.log(data);
-            const randomNews = data.articles[Math.floor(Math.random() * 20)];
+            const randomNews = data.articles[Math.floor(Math.random() * 40)];
             // console.log(randomNews);
             setNews(randomNews);
         }

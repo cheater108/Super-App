@@ -10,7 +10,7 @@ async function fetchNews() {
             params: {
                 apiKey: import.meta.env.VITE_NEWS_API_KEY,
                 q: "India",
-                pageSize: 20,
+                pageSize: 40,
             },
         });
         localStorage.setItem("news", JSON.stringify(data));
