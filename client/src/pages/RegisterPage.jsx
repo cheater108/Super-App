@@ -16,7 +16,7 @@ function RegisterPage() {
                 <div className={styles.right_container}>
                     <div className={styles.header}>
                         {/* <h1>Supper app</h1> */}
-                        <SupperApp align="center" />
+                        <SupperApp align="center" size="2rem" />
                         <p>Create your new account</p>
                     </div>
                     <Form user={user} setUser={setUser} />

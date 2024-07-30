@@ -1,0 +1,20 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.avatar {
+    width: 60px;
+    float: right;
+}
+
+.movies_container {
+    width: 90%;
+    margin: auto;
+}
