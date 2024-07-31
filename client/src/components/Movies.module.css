@@ -1,0 +1,19 @@
+.movies {
+    margin-bottom: 20px;
+}
+
+.movies p {
+    margin-bottom: 10px;
+    color: #878787;
+    font-weight: 600;
+}
+
+.movies_container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.tile img {
+    border-radius: 12px;
+}

@@ -17,6 +17,7 @@ async function fetchMovies(genre = 28) {
             },
         }
     );
+    console.log(results);
     return results;
 }
 
