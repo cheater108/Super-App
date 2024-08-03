@@ -2,10 +2,11 @@
     background-color: #101744;
     height: 100%;
     border-radius: 20px;
+    container-type: size;
 }
 
 .time {
-    font-size: 2rem;
+    font-size: 1.2rem;
     /* padding: 0.3em; */
     text-align: center;
     background-color: #ff4ade;
@@ -32,6 +33,47 @@
 .tile p {
     display: flex;
     align-items: center;
-    font-size: 0.8rem;
-    margin-bottom: 10px;
+    font-size: 0.6rem;
+    margin-bottom: 6px;
+}
+.tile h1 {
+    font-size: 1.2rem;
+}
+
+.tile > div > img {
+    width: 34px;
+}
+
+@container (min-width:540px) {
+    .time {
+        font-size: 2rem;
+        /* padding: 0.3em; */
+        text-align: center;
+        background-color: #ff4ade;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    .info {
+        padding: 10px;
+        display: flex;
+        /* justify-content: space-between; */
+        /* gap: 20%;
+    justify-content: center; */
+    }
+
+    .tile {
+        /* max-width: 120px; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+    }
+    .tile p {
+        display: flex;
+        align-items: center;
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
 }

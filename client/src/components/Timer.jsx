@@ -12,9 +12,24 @@ function Timer() {
     const [time, setTime] = useState(10);
     const [playing, setPlaying] = useState(false);
     const [timmer, setTimmer] = useState(10);
+    const [reset, setReset] = useState(false);
+    const [signal, setSignal] = useState(null);
 
+    // time variable for changing time and displaying in countdown,
+    // timmer varaible keeps track for initial time and displayed that i.e constant.
     const { hours, minutes, sec } = parseSeconds(time);
+    const {
+        hours: s_hours,
+        minutes: s_minutes,
+        sec: s_secs,
+    } = parseSeconds(timmer);
+
     const { hrs, mins, s } = formatTime(hours, minutes, sec);
+    const {
+        hrs: s_hrs,
+        mins: s_mins,
+        s: s_sec,
+    } = formatTime(s_hours, s_minutes, s_secs);
 
     function increaseHandler(rate) {
         if (!playing) {
@@ -44,19 +59,42 @@ function Timer() {
     }
 
     function startHandler() {
-        if (time > 0) setPlaying(!playing);
+        if (time > 0 && reset == false) {
+            setReset(true);
+            setPlaying(!playing);
+            if (signal) clearTimeout(signal);
+            return;
+        }
+        if (time > 0) {
+            if (signal) clearTimeout(signal);
+            setPlaying(!playing);
+        }
     }
 
+    function resetHandler() {
+        if (signal) {
+            clearTimeout(signal);
+            setSignal(null);
+        }
+
+        setPlaying(false);
+        setTime(0);
+        setTimmer(0);
+        setReset(false);
+    }
     useEffect(() => {
         if (playing && time > 0) {
-            setTimeout(() => {
-                setTime(time - 1);
-            }, 1000);
+            setSignal(
+                setTimeout(() => {
+                    setTime(time - 1);
+                }, 1000)
+            );
         }
         if (time === 0) {
             setPlaying(false);
+            setReset(false);
         }
-    });
+    }, [time, playing]);
 
     return (
         <div className={styles.container}>
@@ -72,7 +110,7 @@ function Timer() {
                         styles={buildStyles({
                             strokeLinecap: "round",
 
-                            pathColor: `#ff6a6a`,
+                            pathColor: timmer > 0 ? "#ff6a6a" : "#191e39",
                             textColor: "#f88",
                             trailColor: "#191e39",
                             backgroundColor: "#3e98c7",
@@ -91,7 +129,7 @@ function Timer() {
                             className={styles.control_btn}
                             alt=""
                         />
-                        <p className={styles.time_text}>{hrs}</p>
+                        <p className={styles.time_text}>{s_hrs}</p>
                         <img
                             src={down}
                             onClick={() => decreaseHandle(HOUR_RATE)}
@@ -108,7 +146,7 @@ function Timer() {
                             className={styles.control_btn}
                             alt=""
                         />
-                        <p className={styles.time_text}>{mins}</p>
+                        <p className={styles.time_text}>{s_mins}</p>
                         <img
                             src={down}
                             onClick={() => decreaseHandle(MINUTE_RATE)}
@@ -125,7 +163,7 @@ function Timer() {
                             className={styles.control_btn}
                             alt=""
                         />
-                        <p className={styles.time_text}>{s}</p>
+                        <p className={styles.time_text}>{s_sec}</p>
                         <img
                             src={down}
                             onClick={() => decreaseHandle(1)}
@@ -138,6 +176,12 @@ function Timer() {
                     {playing ? "Stop" : "Start"}
                 </button>
             </div>
+
+            {reset && (
+                <div className={styles.reset} onClick={resetHandler}>
+                    &#8635;
+                </div>
+            )}
         </div>
     );
 }

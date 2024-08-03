@@ -54,6 +54,9 @@
     align-items: center;
     border-radius: 100%;
     position: relative;
+    box-shadow: 0px 6px 26px 0px #0000009c inset;
+
+    box-shadow: -3px -7px 16px 0px #5f58583b;
 }
 .colon {
     display: flex;
@@ -66,4 +69,16 @@
     aspect-ratio: 1/1;
     position: absolute;
     padding: 10px;
+}
+
+.reset {
+    background-color: #ff6a6a;
+    width: 40px;
+    height: 40px;
+    border-radius: 22em;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0px 6px 26px 0px #0000009c inset;
+    cursor: pointer;
+    box-shadow: -3px -7px 16px 0px #5f58583b;
 }

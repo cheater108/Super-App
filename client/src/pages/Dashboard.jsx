@@ -1,18 +1,19 @@
-import AccountMini from "../components/AccountMini";
+import Account from "../components/Account";
 import styles from "./Dashboard.module.css";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import News from "../components/News";
-import WeatherMini from "../components/WeatherMini";
+
 import Note from "../components/Note";
 import Timer from "../components/Timer";
+import Weather from "../components/Weather";
 
 function Dashboard() {
     const { user, selectedGenre } = useContext(AppContext);
     return (
         <div className={styles.container}>
             <div className={styles.div1}>
-                <AccountMini
+                <Account
                     name={user.name}
                     username={user.username}
                     email={user.email}
@@ -20,7 +21,7 @@ function Dashboard() {
                 />
             </div>
             <div className={styles.div2}>
-                <WeatherMini />
+                <Weather />
             </div>
             <div className={styles.div3}>
                 <Timer />
