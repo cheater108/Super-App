@@ -6,6 +6,7 @@ import GenreBox from "../components/GenreBox";
 import { AppContext } from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 import saveGenres from "../utils/saveGenre";
+import { AnimatePresence, motion } from "framer-motion";
 
 function GenresPage() {
     const navigate = useNavigate();
@@ -33,7 +34,12 @@ function GenresPage() {
         }
     }
     return (
-        <div className={styles.container}>
+        <motion.div
+            className={styles.container}
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+        >
             <div className={styles.left}>
                 <SupperApp align="left" />
                 <h1>Choose your entertainment category</h1>
@@ -41,15 +47,21 @@ function GenresPage() {
                     className={styles.selected_list}
                     style={{ marginTop: "20px" }}
                 >
-                    {selectedGenre.map((ele, ind) => (
-                        <div
-                            key={ind}
-                            className={styles.selected}
-                            onClick={() => handleGenreClick(ele)}
-                        >
-                            {ele} <span>&#x2716;</span>
-                        </div>
-                    ))}
+                    <AnimatePresence>
+                        {selectedGenre.map((ele) => (
+                            <motion.div
+                                layout
+                                key={ele}
+                                className={styles.selected}
+                                onClick={() => handleGenreClick(ele)}
+                                animate={{ scale: 1 }}
+                                initial={{ scale: 0 }}
+                                exit={{ scale: 0 }}
+                            >
+                                {ele} <span>&#x2716;</span>
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
                 </div>
                 {required && (
                     <div className={styles.error}>
@@ -76,7 +88,7 @@ function GenresPage() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

@@ -43,6 +43,7 @@
     border-radius: 22em;
     padding: 10px 20px;
     background-color: #148a08;
+    cursor: pointer;
 }
 .selected span {
     float: right;

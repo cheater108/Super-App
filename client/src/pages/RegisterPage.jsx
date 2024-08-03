@@ -3,12 +3,18 @@ import Form from "../components/Form";
 import styles from "./RegisterPage.module.css";
 import { AppContext } from "../context/AppContext";
 import SupperApp from "../components/SupperApp";
+import { motion } from "framer-motion";
 
 function RegisterPage() {
     const { user, setUser } = useContext(AppContext);
 
     return (
-        <div className={styles.container}>
+        <motion.div
+            className={styles.container}
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+        >
             <div className={styles.left}>
                 <h1>Discover new things on Superapp</h1>
             </div>
@@ -33,7 +39,7 @@ function RegisterPage() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

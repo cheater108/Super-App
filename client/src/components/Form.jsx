@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import saveUser from "../utils/saveUser";
 
 function Form({ user, setUser }) {
-    console.log(user);
+    // console.log(user);
     const navigate = useNavigate();
     const [error, setError] = useState({
         name: false,
@@ -19,7 +19,7 @@ function Form({ user, setUser }) {
     function validate(e) {
         e.preventDefault();
         const res = validateForm(user);
-        console.log(res);
+        // console.log(res);
         if (res.valid) {
             saveUser(user);
             navigate("/genres");
@@ -35,7 +35,7 @@ function Form({ user, setUser }) {
                 name="name"
                 placeholder="name"
                 className={error.name ? "error_input" : "none"}
-                value={user.name}
+                value={user?.name}
                 onChange={(e) =>
                     setUser({ ...user, [e.target.name]: e.target.value })
                 }
@@ -46,7 +46,7 @@ function Form({ user, setUser }) {
                 name="username"
                 placeholder="username"
                 className={error.username ? "error_input" : "none"}
-                value={user.username}
+                value={user?.username}
                 onChange={(e) =>
                     setUser({ ...user, [e.target.name]: e.target.value })
                 }
@@ -59,7 +59,7 @@ function Form({ user, setUser }) {
                 name="email"
                 placeholder="email"
                 className={error.email ? "error_input" : "none"}
-                value={user.email}
+                value={user?.email}
                 onChange={(e) =>
                     setUser({ ...user, [e.target.name]: e.target.value })
                 }
@@ -70,7 +70,7 @@ function Form({ user, setUser }) {
                 name="phone"
                 placeholder="phone"
                 className={error.phone ? "error_input" : "none"}
-                value={user.phone}
+                value={user?.phone}
                 onChange={(e) =>
                     setUser({ ...user, [e.target.name]: e.target.value })
                 }
@@ -81,7 +81,7 @@ function Form({ user, setUser }) {
                     type="checkbox"
                     id="data"
                     name="consent"
-                    checked={user.consent}
+                    checked={user?.consent}
                     onChange={(e) =>
                         setUser({ ...user, [e.target.name]: e.target.checked })
                     }

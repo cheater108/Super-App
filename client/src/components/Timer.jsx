@@ -5,6 +5,7 @@ import down from "../assets/down-arrow.svg";
 import parseSeconds from "../utils/parseSeconds";
 import formatTime from "../utils/formatTime";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 const HOUR_RATE = 3600;
 const MINUTE_RATE = 60;
 
@@ -97,92 +98,104 @@ function Timer() {
     }, [time, playing]);
 
     return (
-        <div className={styles.container}>
-            <div className={styles.time_box}>
-                <p className={styles.timmer_text}>
-                    {hrs}:{mins}:{s}{" "}
-                </p>
-                <div className={styles.progress_container}>
-                    <CircularProgressbar
-                        value={time}
-                        maxValue={timmer}
-                        strokeWidth={3}
-                        styles={buildStyles({
-                            strokeLinecap: "round",
+        <motion.div className={styles.container}>
+            <LayoutGroup>
+                <motion.div layout className={styles.time_box}>
+                    <p className={styles.timmer_text}>
+                        {hrs}:{mins}:{s}{" "}
+                    </p>
+                    <div className={styles.progress_container}>
+                        <CircularProgressbar
+                            value={time}
+                            maxValue={timmer}
+                            strokeWidth={3}
+                            styles={buildStyles({
+                                strokeLinecap: "round",
 
-                            pathColor: timmer > 0 ? "#ff6a6a" : "#191e39",
-                            textColor: "#f88",
-                            trailColor: "#191e39",
-                            backgroundColor: "#3e98c7",
-                            pathTransitionDuration: 0.5,
-                        })}
-                    />
-                </div>{" "}
-            </div>
-            <div className={styles.controls}>
-                <div className={styles.tiles}>
-                    <div className={styles.tile}>
-                        <p>Hours</p>
-                        <img
-                            src={up}
-                            onClick={() => increaseHandler(HOUR_RATE)}
-                            className={styles.control_btn}
-                            alt=""
+                                pathColor: timmer > 0 ? "#ff6a6a" : "#191e39",
+                                textColor: "#f88",
+                                trailColor: "#191e39",
+                                backgroundColor: "#3e98c7",
+                                pathTransitionDuration: 0.5,
+                            })}
                         />
-                        <p className={styles.time_text}>{s_hrs}</p>
-                        <img
-                            src={down}
-                            onClick={() => decreaseHandle(HOUR_RATE)}
-                            className={styles.control_btn}
-                            alt=""
-                        />
-                    </div>
-                    <div className={styles.colon}>:</div>
-                    <div className={styles.tile}>
-                        <p>Minutes</p>
-                        <img
-                            src={up}
-                            onClick={() => increaseHandler(MINUTE_RATE)}
-                            className={styles.control_btn}
-                            alt=""
-                        />
-                        <p className={styles.time_text}>{s_mins}</p>
-                        <img
-                            src={down}
-                            onClick={() => decreaseHandle(MINUTE_RATE)}
-                            className={styles.control_btn}
-                            alt=""
-                        />
-                    </div>
-                    <div className={styles.colon}>:</div>
-                    <div className={styles.tile}>
-                        <p>Seconds</p>
-                        <img
-                            src={up}
-                            onClick={() => increaseHandler(1)}
-                            className={styles.control_btn}
-                            alt=""
-                        />
-                        <p className={styles.time_text}>{s_sec}</p>
-                        <img
-                            src={down}
-                            onClick={() => decreaseHandle(1)}
-                            className={styles.control_btn}
-                            alt=""
-                        />
-                    </div>
-                </div>
-                <button onClick={startHandler} className={styles.btn}>
-                    {playing ? "Stop" : "Start"}
-                </button>
-            </div>
-
-            {reset && (
-                <div className={styles.reset} onClick={resetHandler}>
-                    &#8635;
-                </div>
-            )}
-        </div>
+                    </div>{" "}
+                </motion.div>
+                <motion.div layout className={styles.controls}>
+                    <motion.div className={styles.tiles}>
+                        <div className={styles.tile}>
+                            <p>Hours</p>
+                            <img
+                                src={up}
+                                onClick={() => increaseHandler(HOUR_RATE)}
+                                className={styles.control_btn}
+                                alt=""
+                            />
+                            <p className={styles.time_text}>{s_hrs}</p>
+                            <img
+                                src={down}
+                                onClick={() => decreaseHandle(HOUR_RATE)}
+                                className={styles.control_btn}
+                                alt=""
+                            />
+                        </div>
+                        <div className={styles.colon}>:</div>
+                        <div className={styles.tile}>
+                            <p>Minutes</p>
+                            <img
+                                src={up}
+                                onClick={() => increaseHandler(MINUTE_RATE)}
+                                className={styles.control_btn}
+                                alt=""
+                            />
+                            <p className={styles.time_text}>{s_mins}</p>
+                            <img
+                                src={down}
+                                onClick={() => decreaseHandle(MINUTE_RATE)}
+                                className={styles.control_btn}
+                                alt=""
+                            />
+                        </div>
+                        <div className={styles.colon}>:</div>
+                        <div className={styles.tile}>
+                            <p>Seconds</p>
+                            <img
+                                src={up}
+                                onClick={() => increaseHandler(1)}
+                                className={styles.control_btn}
+                                alt=""
+                            />
+                            <p className={styles.time_text}>{s_sec}</p>
+                            <img
+                                src={down}
+                                onClick={() => decreaseHandle(1)}
+                                className={styles.control_btn}
+                                alt=""
+                            />
+                        </div>
+                    </motion.div>
+                    <motion.button
+                        onClick={startHandler}
+                        className={styles.btn}
+                    >
+                        {playing ? "Stop" : "Start"}
+                    </motion.button>
+                </motion.div>
+                <AnimatePresence>
+                    {reset && (
+                        <motion.div
+                            animate={{ scale: 1 }}
+                            initial={{ scale: 0 }}
+                            exit={{ scale: 0 }}
+                            className={styles.reset}
+                            onClick={resetHandler}
+                        >
+                            &#8635;
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </LayoutGroup>
+        </motion.div>
     );
 }
 

@@ -3,13 +3,7 @@ import validateForm from "../utils/validateForm";
 export const AppContext = createContext();
 function AppProvider({ children }) {
     const [user, setUser] = useState(
-        JSON.parse(localStorage.getItem("user")) || {
-            email: "",
-            name: "",
-            username: "",
-            phone: "",
-            consent: false,
-        }
+        JSON.parse(localStorage.getItem("user")) || null
     );
 
     const [selectedGenre, setSelectedGenre] = useState(

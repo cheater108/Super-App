@@ -14,9 +14,9 @@ function Dashboard() {
         <div className={styles.container}>
             <div className={styles.div1}>
                 <Account
-                    name={user.name}
-                    username={user.username}
-                    email={user.email}
+                    name={user?.name}
+                    username={user?.username}
+                    email={user?.email}
                     genres={selectedGenre}
                 />
             </div>

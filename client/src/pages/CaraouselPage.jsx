@@ -12,9 +12,9 @@ function CaraouselPage() {
             <div className={styles.cssportal_grid}>
                 <div className={styles.account}>
                     <Account
-                        name={user.name}
-                        username={user.username}
-                        email={user.email}
+                        name={user?.name}
+                        username={user?.username}
+                        email={user?.email}
                         genres={selectedGenre}
                     />
                 </div>
