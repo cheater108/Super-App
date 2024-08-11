@@ -18,8 +18,8 @@ function Form({ user, setUser }) {
 
     function validate(e) {
         e.preventDefault();
-        const res = validateForm(user);
-        // console.log(res);
+        const res = validateForm(user ?? {});
+        console.log(res);
         if (res.valid) {
             saveUser(user);
             navigate("/genres");

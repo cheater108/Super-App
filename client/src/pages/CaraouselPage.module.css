@@ -13,6 +13,19 @@
     width: 100%;
     height: 100%;
 }
+
+.btn {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border: none;
+    padding: 7px 25px;
+    border-radius: 22em;
+    color: white;
+    background-color: #148a08;
+    float: right;
+    cursor: pointer;
+}
 .account {
     grid-area: 1 / 1 / 5 / 5;
 }

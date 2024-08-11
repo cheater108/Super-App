@@ -14,7 +14,7 @@ function Weather() {
         loadWeather();
     }, []);
     return (
-        <div>
+        <div className={styles.container}>
             <div className={styles.time}>{weather?.time || "loading..."}</div>
             <div className={styles.info}>
                 <div className={styles.tile}>

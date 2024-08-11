@@ -1,4 +1,10 @@
-function validateForm({ name, email, username, phone, consent }) {
+function validateForm({
+    name = "",
+    email = "",
+    username = "",
+    phone = "",
+    consent = false,
+}) {
     const email_regex = /^[A-Za-z0-9\._+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}$/;
     const phone_regex = /[0-9]{10}/;
     const username_regex = /^[A-Za-z0-9\._-]+$/;
@@ -23,6 +29,7 @@ function validateForm({ name, email, username, phone, consent }) {
     error.phone = !phone_regex.test(phone);
     error.consent = !consent;
 
+    console.log("err", error.username);
     for (let prop in error) {
         if (error[prop]) {
             valid = false;
