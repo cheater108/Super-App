@@ -1,7 +1,7 @@
 import axios from "axios";
 
 async function fetchWeather(city = "Mumbai") {
-    const res = await axios.get("http://api.weatherapi.com/v1/current.json", {
+    const res = await axios.get("https://api.weatherapi.com/v1/current.json", {
         params: {
             key: import.meta.env.VITE_WEATHER_API_KEY,
             q: city,
