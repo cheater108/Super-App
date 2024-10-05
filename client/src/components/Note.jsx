@@ -20,6 +20,7 @@ function Note() {
                 ref={note}
                 className={styles.note}
                 onChange={handleChange}
+                placeholder="type your notes here..."
             ></textarea>
         </div>
     );

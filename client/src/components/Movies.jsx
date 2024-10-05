@@ -1,6 +1,6 @@
 import styles from "./Movies.module.css";
 import { useEffect, useState } from "react";
-import fetchMovies from "../utils/fetchMovies";
+import fetchMovies from "../api/fetchMovies";
 
 function Movies({ genre }) {
     const [movies, setMovies] = useState([]);

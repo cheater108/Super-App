@@ -22,7 +22,7 @@ function GenresPage() {
             }
         }
 
-        console.log(selectedGenre);
+        // console.log(selectedGenre);
     }
 
     function handleNext() {

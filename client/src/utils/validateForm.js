@@ -29,7 +29,7 @@ function validateForm({
     error.phone = !phone_regex.test(phone);
     error.consent = !consent;
 
-    console.log("err", error.username);
+    // console.log("err", error.username);
     for (let prop in error) {
         if (error[prop]) {
             valid = false;

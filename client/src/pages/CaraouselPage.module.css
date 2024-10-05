@@ -1,14 +1,13 @@
 .container {
-    height: 100vh;
-    padding: 50px;
+    min-height: 100vh;
+    padding: 20px;
     max-width: 980px;
     margin: auto;
 }
 
 .cssportal_grid {
-    display: grid;
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-columns: repeat(6, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 20px 30px;
     width: 100%;
     height: 100%;
@@ -27,12 +26,50 @@
     cursor: pointer;
 }
 .account {
-    grid-area: 1 / 1 / 5 / 5;
 }
 .news {
-    grid-area: 1 / 5 / 7 / 7;
     background-color: rgba(14, 33, 6, 0.5);
 }
 .weather {
-    grid-area: 5 / 1 / 7 / 5;
+}
+
+@media (min-width: 720px) {
+    .container {
+        height: 100vh;
+        padding: 50px;
+        max-width: 980px;
+        margin: auto;
+    }
+
+    .cssportal_grid {
+        display: grid;
+        grid-template-rows: repeat(6, 1fr);
+        grid-template-columns: repeat(6, 1fr);
+        gap: 20px 30px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .btn {
+        margin-right: 20px;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        border: none;
+        padding: 7px 25px;
+        border-radius: 22em;
+        color: white;
+        background-color: #148a08;
+        float: right;
+        cursor: pointer;
+    }
+    .account {
+        grid-area: 1 / 1 / 5 / 5;
+    }
+    .news {
+        grid-area: 1 / 5 / 7 / 7;
+        background-color: rgba(14, 33, 6, 0.5);
+    }
+    .weather {
+        grid-area: 5 / 1 / 7 / 5;
+    }
 }

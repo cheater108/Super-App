@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import styles from "./News.module.css";
-import fetchNews from "../api/fetchNews";
+import fetchNews from "../api/fetchNewsNew";
 
 function News() {
     const [news, setNews] = useState({});
     useEffect(() => {
         async function loadNews() {
-            const data = await fetchNews();
+            const { data } = await fetchNews();
             // console.log(data);
-            const randomNews = data.articles[Math.floor(Math.random() * 40)];
+            const randomNews = data[Math.floor(Math.random() * 3)];
             // console.log(randomNews);
             setNews(randomNews);
         }
@@ -21,17 +21,17 @@ function News() {
     return (
         <div className={styles.container}>
             <div className={styles?.img_container}>
-                <img src={news?.urlToImage} alt="" />
+                <img src={news?.image_url} alt="" />
                 <div className={styles.title_overlay}>
                     <p onClick={() => handleNewsClick(news?.url)}>
                         {news?.title}
                     </p>
-                    <p>{news?.publishedAt}</p>
+                    <p>{news?.published_at}</p>
                 </div>
             </div>
             <div className={styles.news}>
                 <p>{news?.description}</p>
-                <p>{news?.content}</p>
+                <p>{news?.snippet}</p>
             </div>
         </div>
     );

@@ -8,14 +8,35 @@ import humidity from "../assets/humidity.svg";
 function Weather() {
     const [weather, setWeather] = useState({});
     useEffect(() => {
-        async function loadWeather() {
-            setWeather(await fetchWeather());
+        async function loadWeather(lat, long) {
+            setWeather(await fetchWeather(lat, long));
         }
+        if ("geolocation" in navigator) {
+            /* geolocation is available */
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    loadWeather(
+                        position.coords.latitude,
+                        position.coords.longitude
+                    );
+                },
+                (err) => {
+                    loadWeather();
+                }
+            );
+        } else {
+            /* geolocation IS NOT available */
+            loadWeather();
+        }
+
         loadWeather();
     }, []);
     return (
         <div className={styles.container}>
-            <div className={styles.time}>{weather?.time || "loading..."}</div>
+            <div className={styles.time}>
+                {weather?.time || "loading..."} &nbsp;&nbsp;&nbsp;{" "}
+                {weather?.name}
+            </div>
             <div className={styles.info}>
                 <div className={styles.tile}>
                     <div>

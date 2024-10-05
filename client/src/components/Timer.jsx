@@ -111,7 +111,6 @@ function Timer() {
                             strokeWidth={3}
                             styles={buildStyles({
                                 strokeLinecap: "round",
-
                                 pathColor: timmer > 0 ? "#ff6a6a" : "#191e39",
                                 textColor: "#f88",
                                 trailColor: "#191e39",
